@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Daily Update</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/weather-icons.min.css') }}">
+    <link rel="stylesheet" type="script" href="{{ url_for('static',filename='skycons/skycons.js') }}">
+    <!--<link rel="stylesheet" type="script" href="{{ url_for('static',filename='js/index.js') }}">-->
+    <!--<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">-->
+</head>
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    What's the weather like?
+                </h1>
+            </div>
+        </div>
+    </section>
+    <!--<section class="section">-->
+        <!--<div class="container">-->
+            <!--<div class="columns">-->
+                <!--<div class="column is-offset-4 is-4">-->
+                    <!--<form method="POST">-->
+                        <!--<div class="field has-addons">-->
+                            <!--<div class="control is-expanded">-->
+                                <!--<input class="input" name="city" type="text" placeholder="City Name">-->
+                            <!--</div>-->
+                            <!--<div class="control">-->
+                                <!--<button class="button is-info">-->
+                                    <!--Add City-->
+                                <!--</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</form>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</section>-->
+    <!--TODO need to include GOOGLE MAPS API?  LETS TRY TO INCLUDE NEW LONG LATS FIRST AND THEN GOOGLE MAPS -->
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <div class="box">
+                        <form method="get">
+                            <ul>
+                                <li>
+                                    <label for="latitude"><b>City: </b></label>
+                                    <input type="text" id="city" placeholder="e.g. Atlanta" required>
+                                </li>
+                                <li>
+                                    <label for="latitude"><b>Latitude: </b></label>
+                                    <input type="text" id="latitude" placeholder="e.g. 33.7490" required>
+                                </li>
+                                <li>
+                                    <label for="longitude"><b>Longitude: </b></label>
+                                    <input type="text" id="longitude" placeholder="e.g. -84.3880" required>
+                                </li>
+                            </ul>
+                            <button>Get Weather</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-offset-4 is-4">
+                {% for weather in weather_data %}
+                <div class="box">
+                    <article class="media">
+                        <div class="media-left">
+                            <figure class="image is-120x120">
+                                <!--<i class="wi wi-day-{{  weather.icon  }}" style="font-size: 5.0em;"></i>-->
+                                <canvas id="icon1" width="128" height="128"></canvas>
+                                <script src="/static/skycons/skycons.js"></script>
+                                <script>
+                                     var skycons = new Skycons({"color": "black"});
+                                     skycons.add("icon1", Skycons.{{ weather.icon }});
+                                     skycons.play();
+                                 </script>
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <span class="title">{{ weather.city }}</span>
+                                    <br>
+                                    <span class="subtitle">{{ weather.temperature }}° F</span>
+                                    <br> {{ weather.description }}
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
