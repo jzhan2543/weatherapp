@@ -48,11 +48,12 @@ def index():
     if fio.has_hourly() is True:
         hourly = FIOHourly.FIOHourly(fio)
 
+    iconstring = current.icon.upper().replace("-", "_")
     weather = {
         'city': "Atlanta",
         'temperature': current.temperature,
         'description': hourly.summary,
-        'icon': "RAIN",  # need to try all 10
+        'icon': iconstring,  # need to try all 10
     }
 
     weather_data.append(weather)
