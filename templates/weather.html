@@ -10,38 +10,22 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/weather-icons.min.css') }}">
     <link rel="stylesheet" type="script" href="{{ url_for('static',filename='skycons/skycons.js') }}">
     <!--<link rel="stylesheet" type="script" href="{{ url_for('static',filename='js/index.js') }}">-->
-    <!--<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='css/materialize.min.css') }}"  media="screen,projection"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
     <section class="hero is-primary">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
-                    What's the weather like?
+                    What's the weather like? Powered by Dark Sky API
                 </h1>
             </div>
         </div>
     </section>
-    <!--<section class="section">-->
-        <!--<div class="container">-->
-            <!--<div class="columns">-->
-                <!--<div class="column is-offset-4 is-4">-->
-                    <!--<form method="POST">-->
-                        <!--<div class="field has-addons">-->
-                            <!--<div class="control is-expanded">-->
-                                <!--<input class="input" name="city" type="text" placeholder="City Name">-->
-                            <!--</div>-->
-                            <!--<div class="control">-->
-                                <!--<button class="button is-info">-->
-                                    <!--Add City-->
-                                <!--</button>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</form>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</section>-->
+
     <!--TODO need to include GOOGLE MAPS API?  LETS TRY TO INCLUDE NEW LONG LATS FIRST AND THEN GOOGLE MAPS -->
     <section class="section">
         <div class="container">
@@ -51,19 +35,21 @@
                         <form method="POST">
                             <ul>
                                 <li>
-                                    <label for="latitude"><b>City: </b></label>
-                                    <input type="text" id="city" name="city" placeholder="e.g. Atlanta" required>
+                                    <label for="city"></label>
+                                    <input type="text" id="city" name="city" placeholder="Atlanta" required>
                                 </li>
                                 <li>
-                                    <label for="latitude"><b>Latitude: </b></label>
-                                    <input type="text" id="latitude" name="latitude" placeholder="e.g. 33.7490" required>
+                                    <label for="latitude"></label>
+                                    <input type="text" id="latitude" name="latitude" placeholder="33.7490" required>
                                 </li>
                                 <li>
-                                    <label for="longitude"><b>Longitude: </b></label>
-                                    <input type="text" id="longitude" name="longitude" placeholder="e.g. -84.3880" required>
+                                    <label for="longitude"></label>
+                                    <input type="text" id="longitude" name="longitude" placeholder="-84.3880" required>
                                 </li>
                             </ul>
-                            <button>Get Weather</button>
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Get Weather
+                                <i class="material-icons right">send</i>
+                            </button>
                         </form>
                     </div>
                 </div>

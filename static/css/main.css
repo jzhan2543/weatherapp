@@ -1,1 +1,5 @@
-@import "@material/textfield/mdc-text-field";
+input[type=text] {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+}
