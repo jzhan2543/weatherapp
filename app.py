@@ -32,10 +32,10 @@ def index():
              db.session.commit()
     cities = City.query.all()
 
-    apikey = '0aeec00f1b38da64c35ee0583f943ed8'
+    apikey = {}
     weather_data = []
 
-    atl = [33.7490, -84.3880]
+    atl = [33.7490, -84.3880] #just for testing purposes
     for city in cities:
         fio = ForecastIO.ForecastIO(apikey, latitude=city.latitude, longitude=city.longitude)
         current = FIOCurrently.FIOCurrently(fio)
