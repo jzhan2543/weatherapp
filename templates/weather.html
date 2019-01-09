@@ -79,11 +79,11 @@
                         <div class="media-left">
                             <figure class="image is-120x120">
                                 <!--<i class="wi wi-day-{{  weather.icon  }}" style="font-size: 5.0em;"></i>-->
-                                <canvas id="icon1" width="128" height="128"></canvas>
+                                <canvas id="icon_{{ weather.city }}" width="128" height="128"></canvas>
                                 <script src="/static/skycons/skycons.js"></script>
                                 <script>
                                      var skycons = new Skycons({"color": "black"});
-                                     skycons.add("icon1", Skycons.{{ weather.icon }});
+                                     skycons.add("icon_{{  weather.city }}", Skycons.{{ weather.icon }});
                                      skycons.play();
                                  </script>
                             </figure>
