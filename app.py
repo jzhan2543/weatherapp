@@ -1,6 +1,7 @@
 from flask import Flask, render_template
+from flask import request
 from flask_sqlalchemy import SQLAlchemy
-import request
+import requests
 from forecastiopy import *
 
 app = Flask(__name__)
@@ -20,14 +21,15 @@ class City(db.Model):
 @app.route('/', methods=['GET', 'POST'])
 #@app.route('/')
 def index():
-    # if request.method == 'POST':
-    #      new_city = request.form.get('city')
-    #      lat = request.form.get("latitude")
-    #      long = request.form.get('longitude')
-    #      if new_city and lat and long:
-    #          new_city_obj = City(city=new_city, latitude=lat, longitdue=long)
-    #          db.session.add(new_city_obj)
-    #          db.session.commit()
+    if request.method == 'POST':
+         new_city = request.form.get('city')
+         lat = request.form.get("latitude")
+         long = request.form.get('longitude')
+         print(new_city + str(lat) + str(long))
+         if new_city and lat and long:
+             new_city_obj = City(city=new_city, latitude=lat, longitude=long)
+             db.session.add(new_city_obj)
+             db.session.commit()
     cities = City.query.all()
 
     apikey = '0aeec00f1b38da64c35ee0583f943ed8'

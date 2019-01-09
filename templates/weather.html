@@ -48,19 +48,19 @@
             <div class="columns">
                 <div class="column is-offset-4 is-4">
                     <div class="box">
-                        <form method="get">
+                        <form method="POST">
                             <ul>
                                 <li>
                                     <label for="latitude"><b>City: </b></label>
-                                    <input type="text" id="city" placeholder="e.g. Atlanta" required>
+                                    <input type="text" id="city" name="city" placeholder="e.g. Atlanta" required>
                                 </li>
                                 <li>
                                     <label for="latitude"><b>Latitude: </b></label>
-                                    <input type="text" id="latitude" placeholder="e.g. 33.7490" required>
+                                    <input type="text" id="latitude" name="latitude" placeholder="e.g. 33.7490" required>
                                 </li>
                                 <li>
                                     <label for="longitude"><b>Longitude: </b></label>
-                                    <input type="text" id="longitude" placeholder="e.g. -84.3880" required>
+                                    <input type="text" id="longitude" name="longitude" placeholder="e.g. -84.3880" required>
                                 </li>
                             </ul>
                             <button>Get Weather</button>
